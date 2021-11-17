@@ -8,8 +8,8 @@
         </div>
         <div class="card-body">
             <p>Nombre: <?php echo $user['nombre'] ?></p>
-            <a href="<?php echo url()."?c=factura&m=eliminar_user&id=".$user['cod_cliente'] ?>">Eliminar</a>
-            <a href="<?php echo url()."?c=factura&m=edit&id=".$user['cod_cliente'] ?>" class="btn btn-info">Editar usuario</a>
+            <a class="btn btn-danger" href="<?php echo url()."?c=factura&m=eliminar_user&id=".$user['cod_cliente'] ?>"><i class="fas fa-trash-alt"></i></a>
+            <a href="<?php echo url()."?c=factura&m=edit&id=".$user['cod_cliente'] ?>" class="btn btn-outline-info"><i class="fas fa-user-edit"></i></a>
         </div>
     </div>
     <?php endforeach ?>

@@ -47,7 +47,7 @@
                 "telefono" => $telefono
             ];
             $result = $this->model->updateUser($data,$cod_cliente);
-            header('Location:'.url()."?c=factura&m=user");
+            header('Location:'.url()."?c=factura");
             //var_dump($result);
         }
     }

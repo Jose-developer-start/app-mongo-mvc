@@ -15,7 +15,7 @@
 
     $controller = new $requestController;
 
-    if(!isset($_REQUEST['c'])){
+    if(!isset($_REQUEST['m'])){
         $controller->index();
     }else{
         call_user_func([$controller,$requestMethod]);
