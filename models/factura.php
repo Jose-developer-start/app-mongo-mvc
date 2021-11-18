@@ -10,8 +10,17 @@
 
         public function get(){
             //Return factura_parcial
-            $facturas = $this->BD::connect()->facturas;
-            return $facturas->find();
+            $facturas = BD::connect()->facturas->aggregate([
+                [
+                    '$lookup' => [
+                        'from' => 'clientes',
+                        'localField' => 'cod_cliente',
+                        'foreignField' => 'cod_cliente',
+                        'as' => 'clientes'
+                    ]
+                ]
+            ]);
+            return $facturas;
         }
 
         public function find(array $id){
@@ -33,5 +42,18 @@
                     'telefono' => $data['telefono']
                 ]]
             );
+        }
+        public function lookup(){
+            $data = BD::connect()->facturas->aggregate([
+                [
+                    '$lookup' => [
+                        'from' => 'clientes',
+                        'localField' => 'cod_cliente',
+                        'foreignField' => 'cod_cliente',
+                        'as' => 'clientes'
+                    ]
+                ]
+            ]);
+            return $data;
         }
     }

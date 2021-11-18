@@ -4,7 +4,7 @@
         public static function connect(){
             
             $client = new MongoDB\Client("mongodb://localhost:27017");
-	        $conexion = $client->factura_parcial;
+	        $conexion = $client->factura;
             return $conexion;
         } 
     }

@@ -8,7 +8,7 @@
         }
         public function index(){
             include_once "./views/index.php";
-
+            
         }
         public function saludo(){
             echo "Saludos ";
@@ -49,5 +49,11 @@
             $result = $this->model->updateUser($data,$cod_cliente);
             header('Location:'.url()."?c=factura");
             //var_dump($result);
+        }
+        public function lookup(){
+            
+            foreach($this->model->lookup() as $factura){
+                echo $factura['num_factura'];
+            }
         }
     }
