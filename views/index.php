@@ -9,7 +9,8 @@
       <th scope="col">Fecha de emision</th>
       <th scope="col">Cantidad</th>
       <th scope="col">Total</th>
-      <th scope="col">Codigo de cliente</th>
+      <th scope="col">Cliente</th>
+      <th scope="col">Productos</th>
       <th>Acciones</th>
     </tr>
   </thead>
@@ -17,15 +18,19 @@
       <?php foreach($this->model->get() as $factura):?>
         
     <tr>
-      <td scope="row"><?php echo $factura['num_factura'] ?></td>
-      <td scope="row"><?php echo $factura['fecha_emision'] ?></td>
-      <td scope="row"><?php echo $factura['cantidad'] ?></td>
-      <td scope="row"><?php echo $factura['total'] ?></td>
-      <td scope="row"><a href="<?php echo url()."?c=factura&m=user&id=".$factura['cod_cliente'] ?>">
-        <?php foreach($factura['clientes'] as $cliente){
-            echo $cliente['nombre'];
-        }  
+      <td scope="row"><?php echo $factura->num_factura ?></td>
+      <td scope="row"><?php echo $factura->fecha_emision ?></td>
+      <td scope="row"><?php echo $factura->cantidad ?></td>
+      <td scope="row"><?php echo $factura->total ?></td>
+      <td scope="row"><a href="<?php echo url()."?c=factura&m=user&id=".$factura->cod_cliente ?>">
+        <?php
+            echo $factura->clientes['nombre']. " ".$factura->clientes['apellido'] ;
+        ?>
+      </a></td>
 
+      <td scope="row"><a href="<?php echo url()."?c=factura&m=user&id=".$factura->productos->cod_producto ?>">
+        <?php
+            echo $factura->productos['nombre_pro'];
         ?>
       </a></td>
 

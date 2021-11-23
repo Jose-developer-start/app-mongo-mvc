@@ -9,7 +9,7 @@
         }
 
         public function get(){
-            //Return factura_parcial
+            //Return factura
             $facturas = BD::connect()->facturas->aggregate([
                 [
                     '$lookup' => [
@@ -18,7 +18,21 @@
                         'foreignField' => 'cod_cliente',
                         'as' => 'clientes'
                     ]
-                ]
+                    ],
+                    [
+                        '$unwind' => '$clientes' 
+                    ],
+                [
+                    '$lookup' => [
+                        'from' => 'productos',
+                        'localField' => 'cod_productos',
+                        'foreignField' => 'cod_productos',
+                        'as' => 'productos'
+                    ]
+                    ],
+                    [
+                        '$unwind' => '$productos' 
+                    ]
             ]);
             return $facturas;
         }
