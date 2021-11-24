@@ -56,4 +56,12 @@
                 echo $factura['num_factura'];
             }
         }
+
+        public function delete(){
+            $id = $_GET['num_factura'];
+            $cod_cliente = $_GET['cod_cliente'];
+            $this->model->deleteFactura($id,$cod_cliente);
+            
+            header('Location:'.url().'?c=factura');
+        }
     }

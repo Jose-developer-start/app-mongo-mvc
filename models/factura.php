@@ -70,4 +70,17 @@
             ]);
             return $data;
         }
+        public function deleteFactura($id,$cod_cliente){
+
+            BD::connect()->facturas->deleteOne(['num_factura' => $id]);
+            //Eliminando un elemento de la factura clientes
+
+            BD::connect()->clientes->updateOne(
+                ['cod_cliente' => $cod_cliente],
+                [
+                    '$pull' => ['factura' => $id]
+                ]
+            );
+            return true;
+        }
     }
